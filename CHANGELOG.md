@@ -1,4 +1,4 @@
-# Changelog for `a`
+# Changelog for `linear-regression`
 
 All notable changes to this project will be documented in this file.
 
