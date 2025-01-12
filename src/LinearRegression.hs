@@ -1,4 +1,3 @@
--- src/LinearRegression.hs
 module LinearRegression (
     addMatrices,
     multiplyMatrices,

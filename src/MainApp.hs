@@ -2,16 +2,20 @@ module MainApp (mainApp) where
 
 import Test (trainAndTest)
 import Chart (plotData)
-import LinearRegression (predict)
+import LinearRegression (predict, gradientDescent)
 
 mainApp :: IO ()
 mainApp = do
-    -- Train the model and test it
     trainAndTest
-
-    -- Optionally: Plot data after training
-    let x = [[1, 1], [1, 2], [1, 3], [1, 4]]
-        y = [2, 3, 4, 5]
-        theta = [0.5, 1.0]  -- Assuming theta is trained
+    let x = [ [1, 1400, 3], 
+              [1, 1600, 4], 
+              [1, 1700, 3], 
+              [1, 1875, 4] ]
+        y = [245, 312, 279, 308]
+        initialTheta = [0, 0, 0]
+        alpha = 0.0000001
+        iterations = 10000
+        theta = gradientDescent x y initialTheta alpha iterations
+        sizes = map (!! 1) x
         predictions = map (flip predict theta) x
-    plotData (map (!! 1) x) y theta predictions
+    plotData sizes y theta predictions
